@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <title>Calculator</title>
+
+</head>
+
+
+
+<body>
+    <!--
+Exercise 1.
+By using jQuery 
+a.) How you can select all <p>- elements?$("p")
+b.) How you can select the first <p>- element?$("p.first")
+c.) How you can select <p>-elements with id=’info’?$("p.info")
+Exercise 2.
+By using jQuery
+a.) How you can change the text in paragraph element?$("#oldtext").text("New text")
+b.) How you can append to paragraph element? $(".selected").append("More text")
+c.) How you can change paragraph element’s textcolor to red? $("p").css("color", "red");
+Exercise 3.
+By using jQuery
+a.) How you add listener to the first <p>-elements which hides the element when you click it. $("p:first").click(function() {
+                $(this).toggle();
+            });
+b.) How you add listener to the all <p>-elements which hides them when you double click these.
+$("p").dblclick(function() {
+                $(this).hide();
+            });
+c.) How you add listener to button which hides all <p>-elements and change button text to
+’Pressed
+  $("button").html("Clicked");
+            });
+d.) How you add listener to button which opens alert window and show the text from the first <p>-
+element in it.
+  alert($(input:text").val());
+            });
+
+    -->
+    <div class="container">
+
+        <h1>Calculator</h1>
+        <div>
+            <p>Result =</p>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="form-group">
+
+                <input type="text" class="form-control" id="input1">
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+
+                <input type="text" class="form-control" id="input2">
+            </div>
+        </div>
+        <div style="align-item:center">
+            <button type="button" id="plus" class="btn btn-basic">+</button>
+            <button type="button" id="minus" class="btn btn-basic">-</button>
+        </div>
+    </div>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            $("#plus").click(function() {
+                var num1 = Number($("#input1").val());
+                var num2 = Number($("#input2").val());
+                var equal = num1 + num2;
+                $("p").text("Result = " + equal);
+            });
+            $("#minus").click(function() {
+                var num1 = Number($("#input1").val());
+                var num2 = Number($("#input2").val());
+                var equal = num1 - num2;
+                $("p").text("Result = " + equal);
+            });
+        });
+
+    </script>
+</body>
+
+</html>
