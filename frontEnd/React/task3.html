@@ -16,18 +16,19 @@
       class RestWeather extends React.Component {
         constructor(props) {
           super(props);
-          this.state = {temp:'', weather:''};
+          this.state = {temp:'', weather:'', icon:''};
         }
           
         componentDidMount() {
-          fetch('http://api.openweathermap.org/data/2.5/weather?q=London&APPID=2e29d9e4725de701582d9e136628f622')
+          fetch('http://api.openweathermap.org/data/2.5/weather?q=Helsinki&APPID=2e29d9e4725de701582d9e136628f622')
           .then((response) => response.json()) 
           .then((responseData) => { 
              console.log(responseData.main.temp);
               console.log(responseData.weather[0].main);
               this.setState({ 
                 temp: responseData.main.temp,
-                weather: responseData.weather[0].main
+                weather: responseData.weather[0].main,
+                  icon: 'http://openweathermap.org/img/w/'+responseData.weather[0].icon+'.png'
               }); 
             
           });
@@ -36,12 +37,12 @@
         render() { 
             console.log(this.state.temp);
             console.log(this.state.weather);
+            console.log(this.state.icon);
           return (
             <div>
-              <div> {this.state.temp}</div>
-              <div>
-                <div>{this.state.weather} </div>
-              </div>
+              <div>Temperature: {this.state.temp} </div>
+              <div>Weather: {this.state.weather} </div>
+              <img src={this.state.icon} ></img>
             </div>
           );
         }

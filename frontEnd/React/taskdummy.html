@@ -12,26 +12,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
       <script type="text/babel">
        class GithubRepo extends React.Component {
-           
            constructor (props) {
                super(props);
-               this.state = {listItem: [], text:'',fetchText:''};
+               this.state = {listItem: []};
            }
-           
-           inputChanged = (event) => {
-               this.setState({text: event.target.value});
-               console.log(this.text);
-            }
-           
-           addTodo = (event) => {
-            event.preventDefault(); 
-               this.setState({fetchText: 'https://api.github.com/search/repositories?q='+this.text} );
-               console.log(this.fetchText);
-               return this.fetchText;
-             
-            }
-
-           
            componentDidMount() {
                fetch('https://api.github.com/search/repositories?q=react')
                    .then((response) => response.json())
@@ -41,8 +25,6 @@
                    });
                });
              }
-
-
             render() {
                console.log(this.state.listItem);
                const itemRows= this.state.listItem.map(
@@ -53,15 +35,8 @@
                     </tr>
                    
                );
-                   
-                   
                return (
                 <div>
-        
-                <form onSubmit={this.addTodo}>
-                    <input type="text" onChange={this.inputChanged} value={this.state.text}/>
-                    <input type="submit" value="Add"/>
-                </form>//
                    <h2>App lists</h2>
                    <table><tbody>
                    <tr><th>Name</th>
