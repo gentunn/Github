@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Chuck Norris Jokes</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div id='root'></div>
+ 
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    
+
+    <script type="text/babel">
+     class ChuckJokes extends React.Component {
+      constructor (props) {
+               super(props);
+               this.state = {joke:'', icon:''};
+           }
+      newJoke = () => {
+               fetch('https://api.chucknorris.io/jokes/random')
+                   .then((response) => response.json())
+                   .then((responseData) => {
+                   this.setState({
+                     joke: responseData.value,
+                     icon: responseData.icon_url
+                   });
+               });
+             };
+     render() { 
+            console.log(this.state.joke);
+            console.log(this.state.icon);
+          return (
+            <div className="container">
+              <h1>Chuck Norris Jokes</h1>
+              <div className="card-header"><img src={this.state.icon}></img></div>
+              <div className="card-body">{this.state.joke} </div>
+            <button onClick={this.newJoke} type="button" class="btn btn-primary" >Click for new joke</button> 
+            </div>
+          );
+        }
+     } 
+    ReactDOM.render(<ChuckJokes/>, document.getElementById('root'));
+    </script>
+      
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
