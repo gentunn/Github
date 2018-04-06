@@ -1,0 +1,6 @@
+write a separate getJoke () => { fetch ;...}
+ then componentDidMount { this.getJoke(); }
+
+in render {
+ <input type="button" onClick=this.getJoke()>
+}
