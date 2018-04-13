@@ -1,4 +1,4 @@
-package com.bookstore.store;
+package fi.haagahelia.course;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -7,18 +7,24 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import  com.bookstore.store.web.BookController;
 
+import fi.haagahelia.course.web.HelloController;
+
+/**
+ * Testing that the context is creating your controller
+ * 
+ * @author h01270
+ *
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class BookstoreApplicationTests {
+public class HellotestApplicationTests {
 
     @Autowired
-    private BookController controller;
+    private HelloController controller;
 
     @Test
     public void contexLoads() throws Exception {
         assertThat(controller).isNotNull();
     }	
-
 }

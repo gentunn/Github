@@ -17,9 +17,9 @@ class App extends Component {
                 </header>
                 <BrowserRouter>
                     <div>
-                    <Link to="/">Frontpage</Link>
-                    <Link to="/home">Home</Link>
-                    <Link to="/carList">Cars</Link>
+                    <Link style={{margin:20}} to="/">Frontpage</Link>
+                    <Link style={{margin:20}} to="/home">Home</Link>
+                    <Link style={{margin:20}} to="/carList">Cars</Link>
                     <Switch>
                         <Route exact path="/" component={FrontPage}/>
                         <Route path="/home" component={Home}/>
